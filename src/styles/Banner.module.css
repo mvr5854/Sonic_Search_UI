@@ -1,0 +1,14 @@
+.banner {
+  text-align: center;
+  color: #9C5700;
+  background-color: #FFEB9C;
+  margin-bottom: 30px;
+  padding: 16px;
+  border: 1px solid #9C5700;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.banner p {
+  margin: 0;
+}
