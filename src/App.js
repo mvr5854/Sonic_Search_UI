@@ -22,7 +22,13 @@ function App() {
         />
       </div>
       <div className="app_body">
-        <Result response={response} isSong={isSong} searchTerm={searchTerm} isLoading={isLoading} />
+        <Result
+          response={response}
+          isSong={isSong}
+          searchTerm={searchTerm}
+          setSearchTerm={setSearchTerm}
+          isLoading={isLoading}
+        />
       </div>
     </div>
   );

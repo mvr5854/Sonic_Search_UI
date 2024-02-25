@@ -34,7 +34,7 @@ export default function Result(props) {
         props.isSong ? <DisplaySongs data={data} /> : <DisplaySingers data={data} />
       ) : (
         <>
-          {props.searchTerm !== "" && !props.isLoading && <Banner msg={message} />}
+          {props.searchTerm !== "" && !props.isLoading && <Banner msg={message} setSearchTerm={props.setSearchTerm} />}
           {props.isSong ? 
           <DefaultSongs defaultSongs={defaultSongs} setDefaultSongs={setDefaultSongs} /> : 
           <DefaultSingers defaultSingers={defaultSingers} setDefaultSingers={setDefaultSingers} />}

@@ -7,8 +7,23 @@
   border: 1px solid #9C5700;
   border-radius: 4px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
 }
 
 .banner p {
   margin: 0;
+}
+
+.close_btn {
+  color: #9C5700;
+  background-color: #fff;
+  aspect-ratio: 1 / 1;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  outline: none;
+  z-index: 1;
 }
