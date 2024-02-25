@@ -4,10 +4,12 @@ import axios from "axios";
 import DisplaySongs from "./DisplaySongs";
 
 export default function DefaultSongs(props) {
+  axios.defaults.baseURL = process.env.REACT_APP_BASE_URL;
+
   useEffect(() => {
     if (props.defaultSongs.length === 0) {
       axios
-        .get("http://localhost:8080/api/default-songs")
+        .get("default-songs")
         .then((response) => {
           response.status === 200 && props.setDefaultSongs(response.data);
           console.log(response);

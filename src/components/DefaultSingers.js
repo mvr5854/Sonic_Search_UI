@@ -4,10 +4,12 @@ import axios from "axios";
 import DisplaySingers from "./DisplaySingers";
 
 export default function DefaultSingers(props) {
+  axios.defaults.baseURL = process.env.REACT_APP_BASE_URL;
+
   useEffect(() => {
     if (props.defaultSingers.length === 0) {
       axios
-        .get("http://localhost:8080/api/default-singers")
+        .get("default-singers")
         .then((response) => {
           response.status === 200 && props.setDefaultSingers(response.data);
           console.log(response);
