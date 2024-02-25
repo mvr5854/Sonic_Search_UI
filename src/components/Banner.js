@@ -8,6 +8,7 @@ export default function Banner(props) {
     }, 10000);
 
     return () => clearTimeout(timer);
+  // eslint-disable-next-line
   }, []);
 
   function handleClosing() {

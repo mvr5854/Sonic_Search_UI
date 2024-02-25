@@ -9,7 +9,7 @@ export default function Header(props) {
   const [searchTerm, setSearchTerm] = useState("");
   const [errMsg, setErrMsg] = useState("");
 
-  axios.defaults.baseURL = 'http://localhost:8080/api/';
+  axios.defaults.baseURL = process.env.REACT_APP_BASE_URL;
 
   const songBtnClass = props.isSong ? `${style.toggle_btn} ${style.active}` : style.toggle_btn;
   const singerBtnClass = props.isSong ? style.toggle_btn : `${style.toggle_btn} ${style.active}`;
