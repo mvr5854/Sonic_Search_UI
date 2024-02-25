@@ -7,7 +7,8 @@ import style from '../styles/Header.module.css';
 
 export default function Header(props) {
   const [searchTerm, setSearchTerm] = useState("");
-  
+  const [errMsg, setErrMsg] = useState("");
+
   axios.defaults.baseURL = 'http://localhost:8080/api/';
 
   const songBtnClass = props.isSong ? `${style.toggle_btn} ${style.active}` : style.toggle_btn;
@@ -19,12 +20,14 @@ export default function Header(props) {
     getResults();
     props.setSearchTerm(searchTerm);
     setSearchTerm("");
+    setErrMsg("");
     props.setIsLoading(true);
   };
 
   function handleToggle() {
     props.setIsSong(!props.isSong);
     props.setSearchTerm("");
+    setErrMsg("");
     props.setResponse({});
   }
 
@@ -45,6 +48,22 @@ export default function Header(props) {
       });
   }
 
+  function handleInputChange(event) {
+    const input = event.target.value;
+    if (validateInput(input)) {
+      setSearchTerm(input);
+      setErrMsg("");
+    } else {
+      const lastChar = input.charAt(input.length - 1);
+      setErrMsg(`"${lastChar}" is not a valid character.`)
+    }
+  }
+
+  function validateInput(input) {
+    const regex = /^[a-zA-Z0-9_,?!()'-\s]*$/;
+    return regex.test(input);
+  }
+
   return (
     <>
       {props.isLoading && <Loading />}
@@ -61,10 +80,12 @@ export default function Header(props) {
             <input
               type="text"
               value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
+              onChange={handleInputChange}
               placeholder={props.isSong ? "Enter the title of a song" : "Enter the name of a singer"}
+              required
             />
             <button type="submit">Search</button>
+            {errMsg && <div className={style.error_msg}>{errMsg}</div>}
           </form>
         </div>
       </div>

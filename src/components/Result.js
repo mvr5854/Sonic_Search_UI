@@ -9,20 +9,24 @@ import Banner from "./Banner";
 export default function Result(props) {
   const [defaultSongs, setDefaultSongs] = useState([]);
   const [defaultSingers, setDefaultSingers] = useState([]);
-  const status = props.response.status;
-  const data = props.response.data;
-
+  let status = 0;
+  let data = null;
   let message = '';
+
+  if (props.response) {
+    data = props.response.data;
+    status = props.response.status;
+  } 
 
   if (status === 204) {
     message = `Sorry, we couldn't find anything for "${props.searchTerm}".`;
   } else if (status === 400) {
     message = "Oops! something went wrong. Your request might have contained invalid characters.";
+  } else if (status === 0){
+    message = "Oops! The backend server seems to be down. Please try again later.";
   } else {
     message = "Oops! something went wrong. We're experiencing some technical difficulties.";
   }
-
-  console.log(status);
 
   return (
     <div>
