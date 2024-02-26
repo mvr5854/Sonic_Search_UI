@@ -3,6 +3,15 @@ import axios from "axios";
 
 import DisplaySongs from "./DisplaySongs";
 
+/**
+ * Renders a component that displays a list of default songs.
+ *
+ * @param {Object} props - The component props.
+ * @param {Array} props.defaultSongs - The array of default songs.
+ * @param {Function} props.setDefaultSongs - The function to set the default songs.
+ * 
+ * @returns {JSX.Element} The JSX element representing the component.
+ */
 export default function DefaultSongs(props) {
   axios.defaults.baseURL = process.env.REACT_APP_BASE_URL;
 

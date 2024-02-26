@@ -2,6 +2,11 @@ import React, { useState, useEffect } from 'react';
 
 import style from '../styles/Loading.module.css';
 
+/**
+ * Renders a loading component that displays a loading message with animated dots.
+ * 
+ * @returns {JSX.Element} The loading component.
+ */
 export default function Loading() {
     const [dotCount, setDotCount] = useState(0);
     

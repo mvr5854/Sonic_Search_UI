@@ -5,6 +5,19 @@ import Loading from "./Loading";
 
 import style from '../styles/Header.module.css';
 
+/**
+ * Renders the header component. It contains the site title, search bar, and toggle switch.
+ *
+ * @param {Object} props - The component props.
+ * @param {boolean} props.isSong - Indicates whether the search is for a song or a singer.
+ * @param {Function} props.setIsSong - Function to update the isSong state.
+ * @param {Function} props.setSearchTerm - Function to update the searchTerm state.
+ * @param {Function} props.setResponse - Function to update the response state.
+ * @param {boolean} props.isLoading - Indicates whether the API request is in progress.
+ * @param {Function} props.setIsLoading - Function to update the isLoading state.
+ *
+ * @returns {JSX.Element} The rendered header component.
+ */
 export default function Header(props) {
   const [searchTerm, setSearchTerm] = useState("");
   const [errMsg, setErrMsg] = useState("");
@@ -14,6 +27,11 @@ export default function Header(props) {
   const songBtnClass = props.isSong ? `${style.toggle_btn} ${style.active}` : style.toggle_btn;
   const singerBtnClass = props.isSong ? style.toggle_btn : `${style.toggle_btn} ${style.active}`;
 
+  /**
+   * Handles the form submission event.
+   * 
+   * @param {Event} event - The form submission event.
+   */
   function handleSubmit(event) {
     event.preventDefault();
 
@@ -24,6 +42,9 @@ export default function Header(props) {
     props.setIsLoading(true);
   };
 
+  /**
+   * Handles the toggle action.
+   */
   function handleToggle() {
     props.setIsSong(!props.isSong);
     props.setSearchTerm("");
@@ -31,6 +52,9 @@ export default function Header(props) {
     props.setResponse({});
   }
 
+  /**
+   * Fetches search results based on the search term and sets the response and loading state.
+   */
   function getResults() {
     const url = props.isSong ? `song?title=${searchTerm}` : `singer?name=${searchTerm}`;
 
@@ -48,6 +72,10 @@ export default function Header(props) {
       });
   }
 
+  /**
+   * Handles the input change event.
+   * @param {Event} event - The input change event.
+   */
   function handleInputChange(event) {
     const input = event.target.value;
     if (validateInput(input)) {
@@ -59,6 +87,11 @@ export default function Header(props) {
     }
   }
 
+  /**
+   * Validates the input using a regular expression.
+   * @param {string} input - The input to be validated.
+   * @returns {boolean} - True if the input is valid, false otherwise.
+   */
   function validateInput(input) {
     const regex = /^[a-zA-Z0-9_,?!()'-\s]*$/;
     return regex.test(input);

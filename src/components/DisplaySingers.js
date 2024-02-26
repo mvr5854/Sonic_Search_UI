@@ -1,5 +1,13 @@
 import style from "../styles/DisplayResult.module.css";
 
+/**
+ * Renders a list of singers with their details.
+ * 
+ * @param {Object} props - The component props.
+ * @param {Array} props.data - The array of singer objects containing their information.
+ * 
+ * @returns {JSX.Element} The rendered list of singers.
+ */
 export default function DisplaySingers(props) {
   return (
     <div className={style.list}>

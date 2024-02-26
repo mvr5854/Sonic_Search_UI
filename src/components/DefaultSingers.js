@@ -3,6 +3,15 @@ import axios from "axios";
 
 import DisplaySingers from "./DisplaySingers";
 
+/**
+ * Renders a component that displays a list of default singers.
+ * 
+ * @param {Object} props - The component props.
+ * @param {Array} props.defaultSingers - The array of default singers.
+ * @param {Function} props.setDefaultSingers - The function to set the default singers.
+ * 
+ * @returns {JSX.Element} The JSX element representing the component.
+ */
 export default function DefaultSingers(props) {
   axios.defaults.baseURL = process.env.REACT_APP_BASE_URL;
 

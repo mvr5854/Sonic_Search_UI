@@ -6,6 +6,18 @@ import DefaultSingers from "./DefaultSingers";
 import DefaultSongs from "./DefaultSongs";
 import Banner from "./Banner";
 
+/**
+ * Renders the search result based on the response status and data.
+ * 
+ * @param {Object} props - The component props.
+ * @param {Object} props.response - The response object containing data and status.
+ * @param {string} props.searchTerm - The search term entered by the user.
+ * @param {boolean} props.isLoading - Indicates if the search is in progress.
+ * @param {Function} props.setSearchTerm - The function to update the search term.
+ * @param {boolean} props.isSong - Indicates if the search is for songs or singers.
+ * 
+ * @returns {JSX.Element} The rendered search result component.
+ */
 export default function Result(props) {
   const [defaultSongs, setDefaultSongs] = useState([]);
   const [defaultSingers, setDefaultSingers] = useState([]);
