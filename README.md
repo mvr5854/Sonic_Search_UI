@@ -8,6 +8,8 @@ You can find the instructions for running the Java program here:
 Go to the following URL and run `serve -s build` in a terminal:
 `https://urban-chainsaw-7q5v5r64v5cx7x5.github.dev/`
 
+It might prompt you to sign in to your GitHub account.
+
 If it can't find the `serve` command, run the following commands in the terminal:
 `npm install -g serve`
 `serve -s build`
